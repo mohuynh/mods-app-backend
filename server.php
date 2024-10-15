@@ -80,8 +80,8 @@ function getMod($id) {
 function createMod() {
     global $pdo;
     $data = json_decode(file_get_contents("php://input"), true);
-    $stmt = $pdo->prepare("INSERT INTO mods (name, author, expansion, type, age, gender, clothing_category, size) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    if ($stmt->execute([$data['name'], $data['author'], $data['expansion'], $data['type'], $data['age'], $data['gender'], $data['clothing_category'], $data['size']])) {
+    $stmt = $pdo->prepare("INSERT INTO mods (name, expansion, type, age, gender, clothing_category, size, id_author) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    if ($stmt->execute([$data['name'], $data['expansion'], $data['type'], $data['age'], $data['gender'], $data['clothing_category'], $data['size'], $data['id_author']])) {
         $lastInsertId = $pdo->lastInsertId();
         $sql = 'SELECT * FROM mods WHERE id = :id';
         $stmt = $pdo->prepare($sql);
@@ -96,8 +96,8 @@ function createMod() {
 function updateMod($id) {
     global $pdo;
     $data = json_decode(file_get_contents("php://input"));
-    $stmt = $pdo->prepare("UPDATE mods SET name = ?, author = ?, expansion = ?, type = ?, age = ?, gender = ?, clothing_category = ?, size = ? WHERE id = ?");
-    if ($stmt->execute([$data->name, $data->author, $data->expansion, $data->type, $data->age, $data->gender, $data->clothing_category, $data->size, $id])) {
+    $stmt = $pdo->prepare("UPDATE mods SET name = ?, expansion = ?, type = ?, age = ?, gender = ?, clothing_category = ?, size = ?, id_author= ? WHERE id = ?");
+    if ($stmt->execute([$data->name, $data->expansion, $data->type, $data->age, $data->gender, $data->clothing_category, $data->size, $data->id_author, $id])) {
         $stmt = $pdo->prepare("SELECT * FROM mods WHERE id = ?");
         $stmt->execute([$id]);
         $mod = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -7,7 +7,7 @@ try {
     $sql = "CREATE TABLE IF NOT EXISTS mods (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
-                author TEXT NOT NULL,
+                -- author TEXT NOT NULL,
                 expansion TEXT NOT NULL,
                 type TEXT NOT NULL,
                 age TEXT NOT NULL,
@@ -26,7 +26,7 @@ try {
 
     echo "Database and table created successfully.";
 
-    $sql = 'INSERT INTO mods (name, author, expansion, type, age, gender, clothing_category, size) VALUES ("nom2", "author2", "expansion2", "bottom", "teen", "female", "sleepwear", 2),("nom1", "author1", "expansion1", "top", "child", "female", "casual",1)';
+    $sql = 'INSERT INTO mods (name, expansion, type, age, gender, clothing_category, size) VALUES ("nom2", "expansion2", "bottom", "teen", "female", "sleepwear", 2),("nom1", "expansion1", "top", "child", "female", "casual",1)';
     $pdo->exec($sql);
 
     $sql = 'INSERT INTO modders (name, creation_date) VALUES ("nom2", "2024/01/11"),("nom1", "2024/01/11")';
