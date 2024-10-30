@@ -1,0 +1,13 @@
+{
+    "name": "morgane/backend",
+    "type": "project",
+    "authors": [
+        {
+            "name": "mohuynh",
+            "email": "mohuynh@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.10"
+    }
+}

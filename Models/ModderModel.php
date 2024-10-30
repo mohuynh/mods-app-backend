@@ -29,4 +29,10 @@ class ModderModel extends DB {
             $stmt = $this->pdo->prepare("DELETE FROM modders WHERE id = ?");
             return $stmt->execute([$id]);
       }
+
+      public function readByName($name) {
+            $stmt = $this->pdo->prepare('SELECT * FROM modders WHERE name = :name');
+            $stmt->execute(['name' => $name]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+      }
 }

@@ -27,7 +27,7 @@ switch ($method) {
         }
         else if (isset($request[0]) && $request[0] == 'modders') {
             if (isset($request[1])) {
-                $ModderController->getModder($request[1]);
+                $ModderController->getModder(intval($request[1]));
             } else {
                 $ModderController->getModders();
             }
@@ -37,8 +37,10 @@ switch ($method) {
     case 'POST':
         if (isset($request[0]) && $request[0] == 'mods') {
             $controller->createMod();
-        } else if (isset($request[0]) && $request[0] == 'modders') {
+        } else if (isset($request[0]) && $request[0] == 'signup') {
             $ModderController->createModder();
+        } else if (isset($request[0]) && $request[0] == 'signin') {
+            $ModderController->login();
         }
         break;
 
@@ -46,7 +48,7 @@ switch ($method) {
         if (isset($request[0]) && $request[0] == 'mods' && isset($request[1])) {
             $controller->updateMod($request[1]);
         } else if (isset($request[0]) && $request[0] == 'modders' && isset($request[1])) {
-            $ModderController->updateModder($request[1]);
+            $ModderController->updateModder(intval($request[1]));
         }
         break;
 
