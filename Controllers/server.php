@@ -135,8 +135,6 @@ function deleteMod($id) {
 
 
 // table Modders
-
-
 class ModderController {
 function getModders() {
     $ModderModel = new ModderModel();

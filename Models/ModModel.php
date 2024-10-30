@@ -5,7 +5,7 @@ require_once "Entities/Mod.php";
 class ModModel extends DB {
 
       public function create(Mod $mod) {
-            $stmt = $this->pdo->prepare("INSERT INTO mods (name, expansion, type, age, gender, clothing_category, size, id_author) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $this->pdo->prepare("INSERT INTO mods (name, expansion, type, age, gender, clothing_category, size, id_author, creation_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATE())");
             return $stmt->execute([$mod->getName(), $mod->getExpansion(), $mod->getType(), $mod->getAge(), $mod->getGender(), $mod->getClothingCategory(), $mod->getSize(), $mod->getIdAuthor()]);
       }
 

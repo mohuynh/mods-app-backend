@@ -20,7 +20,7 @@ switch ($method) {
     case 'GET':
         if (isset($request[0]) && $request[0] == 'mods') {
             if (isset($request[1])) {
-                $controller->getMod($request[1]);
+                $controller->getMod(intval($request[1]));
             } else {
                 $controller->getMods();
             }
@@ -46,7 +46,7 @@ switch ($method) {
 
     case 'PUT':
         if (isset($request[0]) && $request[0] == 'mods' && isset($request[1])) {
-            $controller->updateMod($request[1]);
+            $controller->updateMod(intval($request[1]));
         } else if (isset($request[0]) && $request[0] == 'modders' && isset($request[1])) {
             $ModderController->updateModder(intval($request[1]));
         }
@@ -54,9 +54,9 @@ switch ($method) {
 
     case 'DELETE':
         if (isset($request[0]) && $request[0] == 'mods' && isset($request[1])) {
-            $controller->deleteMod($request[1]);
+            $controller->deleteMod(intval($request[1]));
         } else if (isset($request[0]) && $request[0] == 'modders' && isset($request[1])) {
-            $ModderController->deleteModder($request[1]);
+            $ModderController->deleteModder(intval($request[1]));
         }
         break;
 
