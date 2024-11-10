@@ -10,7 +10,7 @@ include 'Core/db.php';
 include 'Controllers/server.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
-$requestUri = $_SERVER['REQUEST_URI'];
+$requestUri = $_GET['REQUEST_URI'];
 $request = explode('/', trim($requestUri, '/'));
 
 $controller = new ModController();
